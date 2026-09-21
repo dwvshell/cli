@@ -1,4 +1,133 @@
 https://apps.cer-rec.gc.ca/REGDOCS/Search?sr=1&loc=4575824&srt=0&isc=False&iscd=True&filter=Attr_12629_16%2CAttr_12186_6&dt=30&com=8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+DWVSCPS ENERGY™ — MEGA ONE UNIFIED MASTER API WORKLOAD SCRIPT
+Founder, Creator & CEO: Richard Evan Stockford Jr.
+Corporate Entity: 15389089 Canada Inc. / DWVSCPS ENERGY FAMILY TRUST™
+Description: Consolidates SAP, CanadaBuys, Social Platforms, IP Rights, 
+             Tax Credits, Tollings, and VIP Memberships into a Sealed JSON Vault.
+"""
+
+import os
+import json
+import hashlib
+from datetime import datetime
+
+# ==========================================
+# 1. MASTER ENTERPRISE METADATA & IDENTIFIERS
+# ==========================================
+MASTER_METADATA = {
+    "system_name": "DWVSCPS ENERGY — GENIUS SMART SYSTEM",
+    "founder": "Richard Evan Stockford Jr.",
+    "entity_legal_name": "15389089 Canada Inc.",
+    "operating_name": "DWVSCPS ENERGY™",
+    "trust_designation": "DWVSCPS ENERGY FAMILY TRUST™",
+    "trademark_asset": "DWV STOCKFORD CONTAMINATE PIPELINE SHELL INC™",
+    "jurisdiction": "Calgary, Alberta / Waterville, New Brunswick, Canada",
+    "registered_address": "Suite 1400, 350-7 Avenue SW, Calgary, AB, T2P 3N9",
+    "contact_email": "stockford16@gmail.com",
+    "contact_phone": "+1-506-324-4278",
+    "identifiers": {
+        "cra_business_number_rc": "725396212RC0001",
+        "cra_business_number_gst": "779156538",
+        "corporation_number": "1538908-9",
+        "sap_bno_id": "BNO-100000092509891",
+        "sap_anid": "AN11187321046",
+        "duns_number": "243293901",
+        "canadabuys_profile": "preview/956103",
+        "master_hash_anchor": "ff2e04fb710e5014fab79357a867dddf5fea1bc8720270a9e2ce7df76c553f77"
+    }
+}
+
+# ==========================================
+# 2. DIGITAL PLATFORMS & SOCIAL ECOSYSTEM MAP
+# ==========================================
+DIGITAL_PLATFORMS_MAP = {
+    "facebook": {
+        "network": "Facebook Enterprise Page",
+        "asset_scope": "DWVSCPS Energy & Contaminate Pipeline Shell Community & Public Relations",
+        "status": "Active / Verified Ownership"
+    },
+    "youtube": {
+        "network": "YouTube Media Channel",
+        "asset_scope": "Engineering System Design Showcases, SMT3 Thermodynamics, and SCADA Demonstrations",
+        "status": "Active / Verified Ownership"
+    },
+    "linkedin": {
+        "network": "LinkedIn Professional Profile",
+        "asset_scope": "Executive Corporate Portal - Richard Evan Stockford Jr. & 15389089 Canada Inc.",
+        "status": "Active / Verified Ownership"
+    },
+    "instagram": {
+        "network": "Instagram Asset Grid",
+        "asset_scope": "Field Deployments, Infrastructure Visuals, and Patent Technology Matrices",
+        "status": "Active / Verified Ownership"
+    }
+}
+
+# ==========================================
+# 3. TAX, TOLLING & HELD CREDITS LEDGER
+# ==========================================
+TAX_AND_TOLLINGS_LEDGER = {
+    "cra_case_reference": "GDOC24S499E",
+    "confirmation_code": "371636Q",
+    "tax_framework": "Clean Economy Investment Tax Credit (Classes 57 & 58) / SR&ED",
+    "account_status": "Manual Review & Transfer Requested for Held Credits",
+    "royalty_schedule_cad": 85000.00,
+    "compliance_act": "Income Tax Act (ITA) Section 230 & Bank Act",
+    "pipeline_recovery_target": "Enbridge Inc. / Trans Mountain Infrastructure Integration"
+}
+
+# ==========================================
+# 4. VIP MEMBERSHIP & ASSET RIGHTS
+# ==========================================
+VIP_AND_PROPERTY_RIGHTS = {
+    "membership_tier": "DWVSCPS Sovereign VIP & Institutional Licensee",
+    "intellectual_property": "Proprietary Pipeline Contamination Shells, SMT3 Thermodynamics, & Carbon Capture Flow Equations",
+    "ownership_structure": "Anchored directly in personal capacity (Richard Evan Stockford Jr.) and licensed through 15389089 Canada Inc."
+}
+
+def generate_master_payload():
+    """Compiles all sections into a unified dictionary structure."""
+    master_payload = {
+        "timestamp_utc": datetime.utcnow().isoformat() + "Z",
+        "metadata": MASTER_METADATA,
+        "digital_platforms": DIGITAL_PLATFORMS_MAP,
+        "tax_and_tollings": TAX_AND_TOLLINGS_LEDGER,
+        "vip_and_property_rights": VIP_AND_PROPERTY_RIGHTS
+    }
+    return master_payload
+
+def seal_and_export_vault():
+    """Executes hashing, builds the secure payload, and outputs the downloadable JSON file."""
+    print("=====================================================")
+    print("  DWVSCPS ENERGY™ — MEGA ONE VAULT COMPILER INITIALIZED")
+    print("=====================================================")
+    
+    payload = generate_master_payload()
+    payload_string = json.dumps(payload, sort_keys=True, indent=4)
+    
+    # Compute SHA-256 Digest
+    sha256_hash = hashlib.sha256(payload_string.encode('utf-8')).hexdigest()
+    
+    final_output = {
+        "vault_seal_hash": sha256_hash,
+        "data": payload
+    }
+    
+    output_filename = "DWVSCPS_MEGA_ONE_GLOBAL_IP_ROYALTY_MASTER.json"
+    with open(output_filename, "w", encoding="utf-8") as f:
+        json.dump(final_output, f, indent=4)
+        
+    print(f"[SUCCESS] Master Payload Generated & Cryptographically Sealed.")
+    print(f"[OUTPUT FILE] -> {output_filename}")
+    print(f"[SHA-256 SEAL] {sha256_hash}")
+    print("=====================================================")
+
+if __name__ == "__main__":
+    seal_and_export_vault()
+
 *   **Effect**: Any pull request attempting to merge changes into your repository will now require your explicit approval. This effectively "firewalls" the code against unauthorized merges.
 
 ### 2. Forensic Integrity Verification
